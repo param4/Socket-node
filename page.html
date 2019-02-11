@@ -63,13 +63,14 @@
     $(function () {
       var socket = io();
       name = prompt("Enter your name: ")
+      socket.emit('store_name',name);
       $('form').submit(function(e){
         e.preventDefault(); // prevents page reloading
         socket.emit('chat_message', $('#m').val());
         $('#m').val('');
         return false;
       });
-      socket.on('chat',function(msg) {
+      socket.on('chat',function(msg,name) {
         $('#messages').append($('<li>').text(`${name} : ${msg}`)); 
       })
     });
