@@ -62,6 +62,7 @@
   <script>
     $(function () {
       var socket = io();
+      name = prompt("Enter your name: ")
       $('form').submit(function(e){
         e.preventDefault(); // prevents page reloading
         socket.emit('chat_message', $('#m').val());
